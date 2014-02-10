@@ -173,7 +173,7 @@ namespace VSTOContrib.Core.RibbonFactory
                     assembly =>
                     {
                         Type[] types = assembly.GetTypes();
-                        return types.Where(ribbonViewModelType.IsAssignableFrom);
+                        return types.Where(ribbonViewModelType.IsAssignableFrom).Where(x => !x.IsAbstract);
                     }
                 )
                 .Aggregate((t, t1) => t.Concat(t1));
